@@ -756,6 +756,9 @@ def multi_case_algorithm_ML1_realtime(REFlev, REFlev1, big_storm, storm_to_track
             #from the tracking algorithm
             o_sp_angle = np.asarray(p_sp_angle) - np.asarray(storm_dirs)
             b_sp_angle = np.asarray(p_sp_angle) - np.asarray(Bunkers_m)
+            #Take care of angles > 180 degrees or situations where the angles cross the 0 degree line.
+            o_sp_angle[np.abs(o_sp_angle)> 180] = (360 - np.abs(o_sp_angle[np.abs(o_sp_angle)> 180])) * (-1*(o_sp_angle[np.abs(o_sp_angle)> 180]/np.abs(o_sp_angle[np.abs(o_sp_angle)> 180])))
+            b_sp_angle[np.abs(b_sp_angle)> 180] = (360 - np.abs(b_sp_angle[np.abs(b_sp_angle)> 180])) * (-1*(b_sp_angle[np.abs(b_sp_angle)> 180]/np.abs(b_sp_angle[np.abs(b_sp_angle)> 180])))
             #Now record all data in a Pandas dataframe.
             new_cells = pd.DataFrame({
                 'scan': scan_index,
