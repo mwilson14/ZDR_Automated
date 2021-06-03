@@ -1,5 +1,4 @@
 from tkinter import *
-from arcalg_framework_newforest import multi_case_algorithm_ML1_newforest
 from algorithm_framework_realtime_auto import multi_case_algorithm_ML1_realtime
 
 import numpy as np
